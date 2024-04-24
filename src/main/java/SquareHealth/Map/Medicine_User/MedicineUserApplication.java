@@ -7,7 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MedicineUserApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(MedicineUserApplication.class, args);
+
+
 	}
 
 }
