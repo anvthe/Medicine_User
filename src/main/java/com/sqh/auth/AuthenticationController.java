@@ -1,9 +1,10 @@
-package SquareHealth.Map.Medicine_User.auth;
+package com.sqh.auth;
 
-import SquareHealth.Map.Medicine_User.repository.UserRepository;
+import com.sqh.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,6 +16,7 @@ public class AuthenticationController {
 
     private final AuthenticationService service;
     private final UserRepository userRepository;
+    //private AuthenticationRequest jwtToken;
 
 
     @PostMapping("/register")
@@ -33,9 +35,24 @@ public class AuthenticationController {
         }
     }
 
-    @PostMapping("/authentication")
+
+/*@PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody AuthenticationRequest request) {
+
+        AuthenticationRequest token = new AuthenticationRequest(request.getEmail(), request.getPassword());
+        service.authenticate(token);
+        String jwt = String.valueOf(service.authenticate(request));
+        return ResponseEntity.ok(jwt);
+    }*/
+
+
+
+    @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
         return ResponseEntity.ok(service.authenticate(request));
     }
 }
+
+
+
 

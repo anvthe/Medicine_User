@@ -1,4 +1,4 @@
-package SquareHealth.Map.Medicine_User.configure;
+package com.sqh.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -6,12 +6,10 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import org.springframework.stereotype.Service;
 
-import javax.crypto.SecretKey;
 import java.security.Key;
 import java.util.*;
 import java.util.function.Function;
@@ -22,8 +20,6 @@ public class JwtService {
 
 
     private static final String SECRET_KEY = "DD3rFs0S8mRxHZ9pImi9AJBmeg4ylC1n4mKI9evPHgKzsonJpNTQdWXkWau8BPBk";
-
-
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);

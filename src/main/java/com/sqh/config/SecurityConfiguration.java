@@ -1,4 +1,4 @@
-package SquareHealth.Map.Medicine_User.configure;
+package com.sqh.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
 @EnableWebSecurity
@@ -19,12 +22,14 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception{
-        http
+
+             /*    http
                 .csrf()
                 .disable()
                 .authorizeRequests()
                 .requestMatchers("/auth/**")
                 .permitAll()
+                         .requestMatchers("/demo-controller").authenticated()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -34,9 +39,36 @@ public class SecurityConfiguration {
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
+            *//* return
+                     http.csrf(AbstractHttpConfigurer::disable)
+                    .authorizeHttpRequests(req -> req
+                            .requestMatchers("/auth").permitAll()
+                            .requestMatchers("/demo-controller").authenticated()
+                    )
+
+                    .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                    .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+                     .build();
+        //return http.build();*//*
 
 
         return http.build();
+        }*/
+
+
+        http.csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(req -> req
+                        .requestMatchers("/auth/**")
+                        .permitAll()
+                        .requestMatchers("/demo-controller").authenticated()
+                )
+
+                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+        return http.build();
+
 
     }
 }
+

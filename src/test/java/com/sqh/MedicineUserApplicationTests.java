@@ -1,4 +1,4 @@
-package SquareHealth.Map.Medicine_User;
+package com.sqh;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

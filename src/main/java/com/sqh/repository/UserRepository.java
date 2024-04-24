@@ -1,6 +1,6 @@
-package SquareHealth.Map.Medicine_User.repository;
+package com.sqh.repository;
 
-import SquareHealth.Map.Medicine_User.user.User;
+import com.sqh.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

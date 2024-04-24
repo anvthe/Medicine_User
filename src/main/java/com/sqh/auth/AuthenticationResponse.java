@@ -1,4 +1,4 @@
-package SquareHealth.Map.Medicine_User.auth;
+package com.sqh.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,9 +1,9 @@
-package SquareHealth.Map.Medicine_User.auth;
+package com.sqh.auth;
 
-import SquareHealth.Map.Medicine_User.configure.JwtService;
-import SquareHealth.Map.Medicine_User.repository.UserRepository;
-import SquareHealth.Map.Medicine_User.user.Role;
-import SquareHealth.Map.Medicine_User.user.User;
+import com.sqh.config.JwtService;
+import com.sqh.repository.UserRepository;
+import com.sqh.entity.Role;
+import com.sqh.entity.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

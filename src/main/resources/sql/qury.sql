@@ -1,11 +1,13 @@
 CREATE TABLE roles (
                        id INT AUTO_INCREMENT PRIMARY KEY,
-                       name VARCHAR(50)
+                       name VARCHAR(255)
 );
 
 CREATE TABLE users (
                        id INT AUTO_INCREMENT PRIMARY KEY,
-                       username VARCHAR(50),
+                       firstname VARCHAR(50),
+                       lastname VARCHAR(50),
+                       email VARCHAR(255) unique ,
                        password VARCHAR(255),
                        enabled BOOLEAN
 );
