@@ -1,10 +1,13 @@
 package com.sqh.auth;
 
+import com.sqh.dto.AuthenticationRequest;
+import com.sqh.dto.AuthenticationResponse;
+import com.sqh.dto.RegisterRequest;
 import com.sqh.repository.UserRepository;
+import com.sqh.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-//import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -16,7 +19,6 @@ public class AuthenticationController {
 
     private final AuthenticationService service;
     private final UserRepository userRepository;
-    //private AuthenticationRequest jwtToken;
 
 
     @PostMapping("/register")
@@ -49,8 +51,21 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request){
-        return ResponseEntity.ok(service.authenticate(request));
+
+            return ResponseEntity.ok(service.authenticate(request));
+
     }
+
+   /* @PostMapping("/login")
+    public ResponseEntity<AuthenticationResponse> authenticate(@RequestBody AuthenticationRequest request) {
+        try {
+            AuthenticationResponse response = service.authenticate(request);
+            return ResponseEntity.ok(response);
+        } catch (UsernameNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(new AuthenticationResponse("User not found"));
+        }
+    }*/
 }
 
 

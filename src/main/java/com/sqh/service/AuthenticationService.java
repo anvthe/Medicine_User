@@ -1,6 +1,8 @@
-package com.sqh.auth;
+package com.sqh.service;
 
-import com.sqh.config.JwtService;
+import com.sqh.dto.AuthenticationRequest;
+import com.sqh.dto.AuthenticationResponse;
+import com.sqh.dto.RegisterRequest;
 import com.sqh.repository.UserRepository;
 import com.sqh.entity.Role;
 import com.sqh.entity.User;
